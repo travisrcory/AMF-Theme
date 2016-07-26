@@ -1,0 +1,236 @@
+/* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
+
+/* inject:imports */
+/* endinject */
+
+/* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
+
+/* **************** IMPORTS **************** */
+@import "fonts/fonts";
+/* **************** imports **************** */
+
+/* **************** VARIABLES **************** */
+// For more look in:
+// modules\apps\foundation\frontend-theme\frontend-theme-unstyled\src\main\resources\META-INF\resources\_unstyled\css\aui\lexicon\bootstrap\_variables.scss
+
+// Media queries breakpoints. Define the breakpoints at which your layout will change, adapting to different screen sizes.
+$screen-xs-min: 480px; // Extra small screen / phone
+$screen-sm-min: 768px; // Small screen / tablet
+$screen-md-min: 992px; // Medium screen / desktop
+$screen-lg-min: 1200px; // Large screen / wide desktop
+
+// Grid system. Define your custom responsive grid.
+// $grid-columns: 12; // Number of columns in the grid.
+// $grid-gutter-width: 30px; // Padding between columns. Gets divided in half for the left and right.
+// $grid-float-breakpoint: $screen-sm-min; // Point at which the navbar becomes uncollapsed
+
+// Container sizes. Define the maximum width of `.container` for different screen sizes.
+$container-tablet: (720px + $grid-gutter-width); // Small screen / tablet
+$container-desktop: (940px + $grid-gutter-width); // Medium screen / desktop
+$container-large-desktop: (1140px + $grid-gutter-width); // Large screen / wide desktop
+
+$ameriprise-blue: #003D6D;
+$ameriprise-font-family: "ITCFRANKGOFORAMERIPRISE-BOOK";
+$ameriprise-font-size: 14pt;
+$header-height: 50px;
+/* **************** variables **************** */
+
+/* **************** PAGE **************** */
+body, html, #wrapper, [id^="senna_surface"]>div, #senna_surface1>div, .flipped,  [class^="senna_surface"],.senna_surface1-default {
+	height: 100%;
+}
+
+body {
+	background-color: pink; // DEBUG
+}
+
+#wrapper {
+	background-color: gold; // DEBUG
+
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+/* **************** page **************** */
+
+/* **************** HEADER/BANNER **************** */
+#banner {
+	background-color: $ameriprise-blue;
+	color: #FFF;
+	font-family: $ameriprise-font-family;
+	font-size: $ameriprise-font-size;
+	height: $header-height;
+	position: relative;
+
+	@include media-query($screen-sm-min, null) {
+		// background-color: yellow; // DEBUG
+	}
+
+	@include media-query($screen-md-min, null) {
+		// background-color: green; // DEBUG
+	}
+
+	@include media-query($screen-lg-min, null) {
+		// background-color: blue; // DEBUG
+	}
+
+	/* **************** LOGO **************** */
+	#heading {
+
+	}
+
+	.site-title {
+		margin: 0;
+	}
+
+	.logo {
+		background-image: url(../images/AdvisorCompass_smallLogo_200.png);
+		background-repeat: no-repeat;
+		display: block;
+		height: $header-height;
+		width: 200px;
+	}
+	/* **************** logo **************** */
+}
+/* **************** header/banner **************** */
+
+/* **************** NAVIGATION **************** */
+#navigationCollapse {
+	height: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	position: absolute;
+	width: 100%;
+
+	.navigation-overlay {
+		background-color: rgba(255, 255, 255, 0.5);
+		height:100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+}
+
+#navigation {
+	background-color: red; // DEBUG
+
+	overflow: hidden;
+
+	height: 100%;
+	position: relative;
+	width: 85%;
+	z-index: 1;
+
+
+	.selected {
+		background-color: red; // DEBUG
+	}
+
+	.open {
+		background-color: blue; // DEBUG
+	}
+
+	.child-menu {
+		display: none;
+	}
+
+	.open .child-menu {
+		display: block;
+	}
+
+	ul {
+		height: 100%;
+		list-style: none;
+		overflow: scroll;
+		padding: 0;
+	}
+
+	li {
+		background-color: gray; // DEBUG
+		cursor: pointer;
+	}
+
+	a, span {
+		background-color: pink; padding: 4px; border: dashed 1px red; // DEBUG
+	}
+
+	.lvl1 {
+		width: 85%;
+	}
+
+	@include media-query($screen-sm-min, null) {
+	}
+
+	@include media-query($screen-md-min, null) {
+	}
+
+	@include media-query($screen-lg-min, null) {
+	}
+
+	/* **************** HEADER NAV **************** */
+	/* **************** header nav **************** */
+
+	/* **************** LVL 1 NAV **************** */
+	.lvl1 {
+
+		@include media-query($screen-sm-min, null) {
+		}
+
+		@include media-query($screen-md-min, null) {
+		}
+
+		@include media-query($screen-lg-min, null) {
+		}
+	}
+	/* **************** lvl 1 nav **************** */
+
+	/* **************** LVL 2 NAV **************** */
+	.lvl2 {
+		background-color: yellow; // DEBUG
+
+		@include media-query($screen-sm-min, null) {
+		}
+
+		@include media-query($screen-md-min, null) {
+		}
+
+		@include media-query($screen-lg-min, null) {
+		}
+	}
+	/* **************** lvl 2 nav **************** */
+
+	/* **************** LVL 3 NAV **************** */
+	.lvl3 {
+		background-color: teal; // DEBUG
+
+		@include media-query($screen-sm-min, null) {
+		}
+
+		@include media-query($screen-md-min, null) {
+		}
+
+		@include media-query($screen-lg-min, null) {
+		}
+	}
+	/* **************** lvl 3 nav **************** */
+
+	/* **************** LVL 4 NAV **************** */
+	.lvl4 {
+		background-color: silver; // DEBUG
+
+		@include media-query($screen-sm-min, null) {
+		}
+
+		@include media-query($screen-md-min, null) {
+		}
+
+		@include media-query($screen-lg-min, null) {
+		}
+	}
+	/* **************** lvl 4 nav **************** */
+}
+/* **************** navigation **************** */
