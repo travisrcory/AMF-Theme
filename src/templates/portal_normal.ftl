@@ -23,18 +23,16 @@
 <div class="container-fluid" id="wrapper">
 	<#-- HEADER/BANNER -->
 	<header id="banner" role="banner">
-		<div class="row">
-			<div id="heading" class="pull-left">
-				<#-- LOGO -->
-				<h1 class="site-title">
-					<a class="${logo_css_class} text-hide" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">${site_name}</a>
-				</h1>
-				<#-- logo -->
-			</div>
+		<div id="heading" class="pull-left">
+			<#-- LOGO -->
+			<h1 class="site-title">
+				<a class="${logo_css_class} text-hide" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">${site_name}</a>
+			</h1>
+			<#-- logo -->
+		</div>
 
-			<div class="pull-right">
-				<button aria-controls="navigation" aria-expanded="false" class="collapsed navbar-toggle" data-target="#navigationCollapse" data-toggle="collapse" type="button">Menu</button>
-			</div>
+		<div class="pull-right">
+			<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open" data-target="#navigationCollapse" data-toggle="collapse" type="button"><span class="header-button-label">Menu</span></button>
 		</div>
 	</header>
 	<#-- header/banner -->

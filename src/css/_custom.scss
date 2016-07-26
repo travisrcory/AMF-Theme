@@ -95,6 +95,37 @@ body {
 /* **************** header/banner **************** */
 
 /* **************** NAVIGATION **************** */
+.header-button {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: 0 solid transparent;
+	height: 50px;
+	padding: 8px;
+	width: 50px;
+
+	.header-button-label {
+		color: #FFF;
+		display: block;
+		font-family: $ameriprise-font-family;
+		font-size: 10px;
+		line-height: 1;
+		margin-top: 26px;
+		text-transform: uppercase;
+	}
+}
+
+.header-button-search-open {
+	background-image: url(../images/ac-icon-search.png);
+}
+
+.header-button-navigation-open {
+	background-image: url(../images/ac-icon-menu.png);
+}
+
+.header-button-close {
+	background-image: url(../images/ac-icon-close.png);
+}
+
 #navigationCollapse {
 	height: 100%;
 	margin-left: 0;
@@ -152,10 +183,6 @@ body {
 	li {
 		background-color: gray; // DEBUG
 		cursor: pointer;
-	}
-
-	a, span {
-		background-color: pink; padding: 4px; border: dashed 1px red; // DEBUG
 	}
 
 	.lvl1 {

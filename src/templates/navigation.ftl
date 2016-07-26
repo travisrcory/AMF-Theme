@@ -5,7 +5,7 @@
 		<h1 class="hide-accessible"><@liferay.language key="navigation" /></h1>
 
 		<div class="pull-right">
-			<button aria-controls="navigation" aria-expanded="false" class="collapsed navbar-toggle" data-target="#navigationCollapse" data-toggle="collapse" type="button">Menu</button>
+			<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-close" data-target="#navigationCollapse" data-toggle="collapse" type="button"><span class="header-button-label">Menu</span></button>
 		</div>
 
 		<#-- LVL1 NAV -->
