@@ -33,10 +33,16 @@ $ameriprise-blue: #003D6D;
 $ameriprise-font-family: "ITCFRANKGOFORAMERIPRISE-BOOK";
 $ameriprise-font-size: 14pt;
 $header-height: 50px;
+
+// Copied from modules\apps\web-experience\product-navigation\product-navigation-control-menu-theme-contributor\src\main\resources\META-INF\resources\control_menu\_variables.scss
+$has-control-menu-margin-top-desktop: 64px;
+$has-control-menu-margin-top-mobile: 48px;
+$has-customization-menu-margin-top-desktop: 64px;
+$has-customization-menu-margin-top-mobile: 48px;
 /* **************** variables **************** */
 
 /* **************** PAGE **************** */
-body, html, #wrapper, [id^="senna_surface"]>div, #senna_surface1>div, .flipped,  [class^="senna_surface"],.senna_surface1-default {
+body, html, #wrapper, [id^="senna_surface"], .flipped, .senna_surface1-default {
 	height: 100%;
 }
 
@@ -44,12 +50,47 @@ body {
 	background-color: pink; // DEBUG
 }
 
+.quick-access-nav {
+	// TODO: Test for accessibility (Tab to content)
+}
+
+.advisor-compass-override.has-control-menu {
+	#banner {
+		top: $has-control-menu-margin-top-mobile;
+
+		@include sm() {
+			top: $has-control-menu-margin-top-desktop;
+		}
+	}
+
+	&.has-customization-menu #banner {
+		top: ($has-control-menu-margin-top-mobile + $has-customization-menu-margin-top-mobile);
+
+		@include sm() {
+			top: ($has-control-menu-margin-top-desktop + $has-customization-menu-margin-top-desktop);
+		}
+	}
+
+	#wrapper {
+		margin-top: ($header-height + $has-control-menu-margin-top-mobile);
+
+		@include sm() {
+			margin-top: ($header-height + $has-control-menu-margin-top-desktop);
+		}
+	}
+
+	&.has-customization-menu #wrapper {
+		margin-top: ($header-height + $has-control-menu-margin-top-mobile + $has-customization-menu-margin-top-mobile);
+
+		@include sm() {
+			margin-top: ($header-height + $has-control-menu-margin-top-desktop + $has-customization-menu-margin-top-desktop);
+		}
+	}
+}
+
 #wrapper {
 	background-color: gold; // DEBUG
-
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 0;
+	margin-top: $header-height;
 }
 /* **************** page **************** */
 
@@ -60,7 +101,11 @@ body {
 	font-family: $ameriprise-font-family;
 	font-size: $ameriprise-font-size;
 	height: $header-height;
-	position: relative;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1;
 
 	@include media-query($screen-sm-min, null) {
 		// background-color: yellow; // DEBUG
@@ -75,10 +120,6 @@ body {
 	}
 
 	/* **************** LOGO **************** */
-	#heading {
-
-	}
-
 	.site-title {
 		margin: 0;
 	}
@@ -92,9 +133,52 @@ body {
 	}
 	/* **************** logo **************** */
 }
-/* **************** header/banner **************** */
 
-/* **************** NAVIGATION **************** */
+
+
+/* **************** SEARCH **************** */
+#searchCollapse {
+	// width: 100%;
+	background-color: #6284AB;
+	// position: relative;
+	clear: both;
+}
+
+#search {
+	// padding: 10px;
+	// position: absolute;
+	// top: $header-height;
+	// left: 0;
+	// width: 100%;
+	// height: 60px;
+
+	// Copied from .hide-accessible
+	.portlet-title-text {
+		clip: rect(0 0 0 0) !important;
+		position: absolute !important;
+
+		/*Webkit and IE7 let clipped content change the scroll height of the page*/
+		/*Scale webkit to 0*/
+		-webkit-transform: scale(0);
+		-webkit-transform-origin-x: 0;
+		-webkit-transform-origin-y: 0;
+		/*Change IE7 to using fixed*/
+		*position: fixed !important;
+		/*...And reset back to absolute for IE6*/
+		_position: absolute !important;
+	}
+
+	.form-group {
+		// margin-bottom: 0;
+	}
+
+	.portlet-topper {
+		// position: absolute;
+	}
+}
+/* **************** search **************** */
+
+/* **************** HEADER BUTTONS **************** */
 .header-button {
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -102,16 +186,16 @@ body {
 	height: 50px;
 	padding: 8px;
 	width: 50px;
+}
 
-	.header-button-label {
-		color: #FFF;
-		display: block;
-		font-family: $ameriprise-font-family;
-		font-size: 10px;
-		line-height: 1;
-		margin-top: 26px;
-		text-transform: uppercase;
-	}
+.header-button-label {
+	color: #FFF;
+	display: block;
+	font-family: $ameriprise-font-family;
+	font-size: 10px;
+	line-height: 1;
+	margin-top: 26px;
+	text-transform: uppercase;
 }
 
 .header-button-search-open {
@@ -125,36 +209,93 @@ body {
 .header-button-close {
 	background-image: url(../images/ac-icon-close.png);
 }
+/* **************** header buttons **************** */
+/* **************** header/banner **************** */
+
+/* **************** NAVIGATION **************** */
+#navigationWrapperOuter {
+	height: 100%;
+	right: 0;
+	position: fixed;
+	top: 0;
+	width: 270px;
+	z-index: 1;
+}
 
 #navigationCollapse {
-	height: 100%;
-	margin-left: 0;
-	margin-right: 0;
-	padding-left: 0;
-	padding-right: 0;
+	background-color: green; // DEBUG
 	position: absolute;
-	width: 100%;
+	right: 0;
+	height: 100%;
+}
 
-	.navigation-overlay {
-		background-color: rgba(255, 255, 255, 0.5);
-		height:100%;
-		left: 0;
-		position: fixed;
-		top: 0;
-		width: 100%;
-		z-index: 1;
-	}
+#navigationWrapperInner {
+	width: 270px;
+	overflow: hidden;
+	height: 100%;
+}
+
+.collapse.display,
+.collapse.overlay,
+.collapse.width {
+	display: none;
+}
+
+.collapse.in.display,
+.collapse.in.overlay,
+.collapse.in.width {
+	display: block;
+}
+
+.collapsing.display {
+	display: block;
+}
+
+.collapsing.overlay {
+	// @include transition(opacity 0.5s ease, visibility);
+	@include transition(opacity 0.5s ease);
+	opacity: 0;
+}
+
+.collapsing.width {
+	// @include transition(width 0.5s ease, visibility);
+	@include transition(width 0.5s ease);
+	width: 0;
+	height: auto;
+}
+
+#navigationCollapse {
+	// height: 100%;
+	// margin-left: 0;
+	// margin-right: 0;
+	// padding-left: 0;
+	// padding-right: 0;
+	// position: fixed;
+	// top: 0;
+	// left: 0;
+	// width: 100%;
+	// z-index: 1;
+}
+
+#navigationOverlay {
+	background-color: rgba(255, 255, 255, 0.5);
+	height:100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1;
 }
 
 #navigation {
 	background-color: red; // DEBUG
 
-	overflow: hidden;
+	// overflow: hidden;
 
-	height: 100%;
-	position: relative;
-	width: 85%;
-	z-index: 1;
+	// height: 100%;
+	// position: relative;
+	// width: 85%;
+	// z-index: 1;
 
 
 	.selected {
@@ -176,7 +317,7 @@ body {
 	ul {
 		height: 100%;
 		list-style: none;
-		overflow: scroll;
+		overflow-y: scroll;
 		padding: 0;
 	}
 
@@ -186,7 +327,7 @@ body {
 	}
 
 	.lvl1 {
-		width: 85%;
+		// width: 85%;
 	}
 
 	@include media-query($screen-sm-min, null) {
@@ -261,3 +402,8 @@ body {
 	/* **************** lvl 4 nav **************** */
 }
 /* **************** navigation **************** */
+
+/* **************** CONTENT **************** */
+#content {
+}
+/* **************** content **************** */

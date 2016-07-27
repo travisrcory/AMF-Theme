@@ -12,7 +12,7 @@
 	<@liferay_util["include"] page=top_head_include />
 </head>
 
-<body class="${css_class}">
+<body class="advisor-compass-override ${css_class}">
 
 <@liferay_ui["quick-access"] contentId="#main-content" />
 
@@ -20,19 +20,49 @@
 
 <@liferay.control_menu />
 
-<div class="container-fluid" id="wrapper">
+<div id="wrapper">
 	<#-- HEADER/BANNER -->
 	<header id="banner" role="banner">
-		<div id="heading" class="pull-left">
-			<#-- LOGO -->
-			<h1 class="site-title">
-				<a class="${logo_css_class} text-hide" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">${site_name}</a>
-			</h1>
-			<#-- logo -->
-		</div>
+		<div class="container">
+			<div class="row">
+				<#-- LOGO -->
+				<div id="heading" class="pull-left">
+					<h1 class="site-title">
+						<a class="${logo_css_class} text-hide" href="${site_default_url}" title="<@liferay.language_format arguments="${site_name}" key="go-to-x" />">${site_name}</a>
+					</h1>
+				</div>
+				<#-- logo -->
 
-		<div class="pull-right">
-			<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open" data-target="#navigationCollapse" data-toggle="collapse" type="button"><span class="header-button-label">Menu</span></button>
+				<#-- NAVIGATION -->
+				<div class="pull-right">
+					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open" data-target=".navigationCollapse" data-toggle="collapse" type="button">
+						<span class="header-button-label">Menu</span>
+					</button>
+				</div>
+				<#-- navigation -->
+
+				<#-- SEARCH -->
+				<div class="pull-right">
+					<button aria-controls="search" aria-expanded="false" class="header-button header-button-search-open" data-target="#searchCollapse" data-toggle="collapse" type="button">
+						<span class="header-button-label">Search</span>
+					</button>
+				</div>
+				<#-- search -->
+			</div>
+
+			<div class="row">
+				<#-- SEARCH -->
+				<div aria-expanded="false" class="collapse" id="searchCollapse">
+					<div id="search" role="search">
+						<#assign VOID = freeMarkerPortletPreferences.setValue("portletSetupPortletDecoratorId", "barebone")>
+
+						<@liferay.search default_preferences="${freeMarkerPortletPreferences}" />
+
+						<#assign VOID = freeMarkerPortletPreferences.reset()>
+					</div>
+				</div>
+				<#-- search -->
+			</div>
 		</div>
 	</header>
 	<#-- header/banner -->
@@ -44,33 +74,37 @@
 	<#-- navigation -->
 
 	<#-- CONTENT -->
-	<section id="content">
-		<h1 class="hide-accessible">${the_title}</h1>
+	<section id="content" class="container">
+		<div class="row">
+			<h1 class="hide-accessible">${the_title}</h1>
 
-		<#-- TODO REMOVE -->
-		<nav id="breadcrumbs">
-			<@liferay.breadcrumbs />
-		</nav>
+			<#-- TODO REMOVE -->
+			<#-- <nav id="breadcrumbs">
+				<@liferay.breadcrumbs />
+			</nav> -->
 
-		<#if selectable>
-			<@liferay_util["include"] page=content_include />
-		<#else>
-			${portletDisplay.recycle()}
-
-			${portletDisplay.setTitle(the_title)}
-
-			<@liferay_theme["wrap-portlet"] page="portlet.ftl">
+			<#if selectable>
 				<@liferay_util["include"] page=content_include />
-			</@>
-		</#if>
+			<#else>
+				${portletDisplay.recycle()}
+
+				${portletDisplay.setTitle(the_title)}
+
+				<@liferay_theme["wrap-portlet"] page="portlet.ftl">
+					<@liferay_util["include"] page=content_include />
+				</@>
+			</#if>
+		</div>
 	</section>
 	<#-- content -->
 
 	<#-- FOOTER -->
-	<footer id="footer" role="contentinfo">
-		<p class="powered-by">
-			<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
-		</p>
+	<footer id="footer" role="contentinfo" class="container" class="row">
+		<div class="row">
+			<p class="powered-by">
+				<@liferay.language key="powered-by" /> <a href="http://www.liferay.com" rel="external">Liferay</a>
+			</p>
+		</div>
 	</footer>
 	<#-- footer -->
 </div>
