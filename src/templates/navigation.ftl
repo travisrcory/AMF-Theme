@@ -1,6 +1,6 @@
-<div id="navigationOverlay" class="opened" aria-expanded="false" aria-controls="navigation"></div>
+<div id="navigationOverlay" class="open navigation-toggle-trigger navigation-toggle-target" aria-expanded="false" aria-controls="navigation"></div>
 
-<div aria-expanded="false" id="navigationWrapper">
+<div id="navigationWrapper" class="open navigation-toggle-target">
 	<div class="container">
 		<div class="row" id="navigationSmallControls">
 			<div class="pull-left">
@@ -12,15 +12,17 @@
 			</div>
 
 			<div class="pull-right">
-				<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-close" type="button">
+				<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-close navigation-toggle-trigger" type="button">
 					<span class="header-button-label">Menu</span>
 				</button>
 			</div>
 		</div>
 
 		<div class="row">
-			<nav class="${nav_css_class}" id="navigation" role="navigation">
+			<nav id="navigation" role="navigation">
 				<h1 class="hide-accessible"><@liferay.language key="navigation" /></h1>
+
+				<p class="tagline"><@liferay.language key="welcome" /></p>
 
 				<#-- LVL1 NAV -->
 				<ul aria-label="<@liferay.language key="site-pages" />" class="lvl1" role="menubar">
@@ -203,15 +205,10 @@
 	</div>
 </div>
 
-<#-- <@liferay_aui.script use="liferay-navigation-interaction"> -->
 <@liferay_aui.script use="liferay-navigation-interaction-advisorcompass">
 	var navigation = A.one('#navigation');
 
 	if (navigation) {
-		<#-- navigation.plug(Liferay.NavigationInteraction); -->
 		navigation.plug(Liferay.NavigationInteractionAdvisorcompass);
 	}
-
-	<#-- Liferay.Data.NAV_INTERACTION_LIST_SELECTOR = '.navbar-site'; -->
-	<#-- Liferay.Data.NAV_LIST_SELECTOR = '.navbar-site'; -->
 </@>

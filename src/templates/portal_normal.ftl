@@ -35,7 +35,7 @@
 
 				<#-- NAVIGATION -->
 				<div class="pull-right">
-					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open" data-target=".navigationCollapse" data-toggle="collapse" type="button">
+					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open navigation-toggle-trigger" data-target=".navigationCollapse" data-toggle="collapse" type="button">
 						<span class="header-button-label">Menu</span>
 					</button>
 				</div>

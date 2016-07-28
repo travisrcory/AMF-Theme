@@ -52,9 +52,33 @@ AUI.add(
 
 				prototype: {
 					initializer: function(config) {
+						console.log('initializer()');
 						var instance = this;
 
-						var navigationOverlay = instance.get('host').get('parentNode').one('.navigation-overlay');
+						instance._navigationToggleTriggers = A.all('.navigation-toggle-trigger');
+						instance._navigationToggleTargets = A.all('.navigation-toggle-target');
+
+						instance._navigationToggleTriggers.on(
+							'click',
+							function (event) {
+								console.log('instance._navigationToggleTriggers.on(click)');
+
+								var isOpen = instance._navigationToggleTargets.first().hasClass('open')
+
+								instance._navigationToggleTriggers.attr('aria-expanded', !isOpen);
+
+								instance._navigationToggleTargets.toggleClass('open', !isOpen);
+							}
+						);
+
+						// var navigation = instance.get('host').all('ul');
+
+						// navigation.each(
+						// 	function (node) {
+						// 		console.log(' >navigation.each');
+						// 		instance._initChildMenuHandlers(node);
+						// 	}
+						// );
 
 						Liferay.detach(['hideNavigationMenu', 'showNavigationMenu']);
 
@@ -69,10 +93,34 @@ AUI.add(
 						var instance = this;
 
 						if (navigation) {
-							navigation.delegate(['click'], instance._onMouseToggle, '> li', instance);
+							navigation.delegate(['click'], instance._onMouseToggle, 'li', instance);
 
 							navigation.delegate('keydown', instance._handleKeyDown, 'a', instance);
 						}
+					},
+
+					_initNodeFocusManager: function() {
+						var instance = this;
+
+						var host = instance.get('host');
+
+						host.plug(
+							A.Plugin.NodeFocusManager,
+							{
+								descendants: '.menuitem-title',  // TODO
+								focusClass: 'focused',
+								keys: {
+									next: 'down:40', // TODO
+									previous: 'down:38' // TODO
+								}
+							}
+						);
+
+						var focusManager = host.focusManager;
+
+						focusManager.after(['activeDescendantChange', 'focusedChange'], instance._showMenu, instance);
+
+						instance._focusManager = focusManager;
 					},
 
 					_onNavigationMenuToggle: function(event) {
@@ -89,7 +137,6 @@ AUI.add(
 								instance._lastShownMenu = menu;
 							}
 
-							// menu.toggleClass('hover', showMenu); // not needed
 							if (true) { // TODO check if has child pages
 								menu.toggleClass('open', showMenu);
 							}

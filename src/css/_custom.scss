@@ -254,6 +254,7 @@ body {
 		left: 0;
 		opacity: 0;
 		position: fixed;
+		right: 0;
 		top: 0;
 		visibility: hidden;
 		width: 100%;
@@ -261,26 +262,32 @@ body {
 
 		@include transition(opacity 0.5s ease);
 
-		&.opened {
+		&.open {
 			height:100%;
 			opacity: 1;
-			position: fixed;
-			right: 0;
-			top: 0;
 			visibility: visible;
-			z-index: 1;
 		}
 	}
 }
 
 #navigationWrapper{
 	@include media-query(null, $ameriprise-screen-sm-max) {
-		height: 100%;
+		height: 0;
 		left: 0;
 		position: fixed;
 		right: 0;
 		top: 0;
+		visibility: hidden;
 		z-index: 1;
+
+		&.open {
+			height: 100%;
+			visibility: visible;
+		}
+	}
+
+	@include media-query($ameriprise-screen-lg-min, null) {
+		background-color: #FFF;
 	}
 
 	@include media-query(null, $ameriprise-screen-sm-max) {
@@ -321,15 +328,27 @@ body {
 
 #navigation {
 	@include media-query(null, $ameriprise-screen-sm-max) {
-		background-color: $ameriprise-blue;
+		background-color: $ameriprise-blue;  // OFF DURRING DEBUG
 		height: 100%;
+		position: relative;
 	}
 
 	@include media-query($ameriprise-screen-lg-min, null) {
 	}
 
-	.selected {
-		background-color: #6284AB; // ???
+	.tagline {
+		@include media-query(null, $ameriprise-screen-sm-max) {
+			display: none;
+		}
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+			color: #000;
+			font-size: 18pt;
+		}
+	}
+
+	.selected, .focused {
+		background-color: #6284AB;
 
 		@include media-query(null, $ameriprise-screen-sm-max) {
 		}
@@ -379,7 +398,7 @@ body {
 	.lvl1, .lvl2, .lvl3 {
 		li {
 			@include media-query(null, $ameriprise-screen-sm-max) {
-				background-color: #53626F;
+				// background-color: #53626F; // OFF DURRING DEBUG
 				border-bottom: 1px solid #A2A4A9;
 			}
 
@@ -403,6 +422,8 @@ body {
 
 	/* **************** LVL 1 NAV **************** */
 	.lvl1 {
+		background-color: red; // DEBUG
+
 		.menuitem-title {
 			cursor: pointer;
 			display: block;
@@ -466,11 +487,7 @@ body {
 	.lvl2 {
 		background-color: yellow; // DEBUG
 
-		@include media-query(null, $ameriprise-screen-xs-max) {
-			// Implied
-		}
-
-		@include media-query($ameriprise-screen-sm-min, null) {
+		@include media-query(null, $ameriprise-screen-sm-max) {
 		}
 
 		@include media-query($ameriprise-screen-lg-min, null) {
@@ -482,11 +499,14 @@ body {
 	.lvl3 {
 		background-color: teal; // DEBUG
 
-		@include media-query(null, $ameriprise-screen-xs-max) {
-			// Implied
-		}
-
-		@include media-query($ameriprise-screen-sm-min, null) {
+		@include media-query(null, $ameriprise-screen-sm-max) {
+			// background-color: $ameriprise-blue;
+			// height: 100%;
+			// left: 0;
+			// position: fixed;
+			// top: 0;
+			// width: 100%;
+			// z-index: 1;
 		}
 
 		@include media-query($ameriprise-screen-lg-min, null) {
