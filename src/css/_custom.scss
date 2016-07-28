@@ -38,7 +38,6 @@ $container-large-desktop: (1140px + $grid-gutter-width); // Large screen / wide 
 
 $ameriprise-blue: #003D6D;
 $ameriprise-font-family: "ITCFRANKGOFORAMERIPRISE-BOOK";
-$ameriprise-font-size: 14pt;
 $header-height: 50px;
 
 // Copied from modules\apps\web-experience\product-navigation\product-navigation-control-menu-theme-contributor\src\main\resources\META-INF\resources\control_menu\_variables.scss
@@ -98,7 +97,6 @@ body {
 }
 
 #wrapper {
-	// background-color: gold; // DEBUG
 	height: 100%;
 	margin-top: 0;
 	padding-top: $header-height;
@@ -110,7 +108,7 @@ body {
 	background-color: $ameriprise-blue;
 	color: #FFF;
 	font-family: $ameriprise-font-family;
-	font-size: $ameriprise-font-size;
+	font-size: 14pt;
 	height: $header-height;
 	left: 0;
 	position: fixed;
@@ -118,27 +116,27 @@ body {
 	top: 0;
 	z-index: 1;
 
-	@include media-query(null, $ameriprise-screen-xs-min) {
-		// Implied
-	}
-
-	@include media-query($ameriprise-screen-sm-min, null) {
-	}
-
-	@include media-query($ameriprise-screen-lg-min, null) {
-	}
-
 	/* **************** LOGO **************** */
 	.site-title {
 		margin: 0;
 	}
 
 	.logo {
-		background-image: url(../images/AdvisorCompass_smallLogo_200.png);
 		background-repeat: no-repeat;
+		background-position: left center;
 		display: block;
 		height: $header-height;
-		width: 200px;
+
+		@include media-query(null, $ameriprise-screen-xs-max) {
+			background-image: url(../images/AdvisorCompass_smallLogo_200.png);
+			width: 200px;
+		}
+
+		@include media-query($ameriprise-screen-sm-min, null) {
+			margin: 0 10px;
+			background-image: url(../images/LOGO.PNG);
+			width: 272px;
+		}
 	}
 	/* **************** logo **************** */
 }
@@ -192,121 +190,172 @@ body {
 	background-color: transparent;
 	background-repeat: no-repeat;
 	border: 0 solid transparent;
+	color: #FFF;
 	height: 50px;
 	padding: 8px;
-	width: 50px;
 }
 
 .header-button-label {
-	color: #FFF;
 	display: block;
 	font-family: $ameriprise-font-family;
-	font-size: 10px;
 	line-height: 1;
-	margin-top: 26px;
-	text-transform: uppercase;
 }
 
 .header-button-search-open {
-	background-image: url(../images/ac-icon-search.png);
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		background-image: url(../images/ac-icon-search.png);
+	}
 }
 
 .header-button-navigation-open {
-	background-image: url(../images/ac-icon-menu.png);
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		background-image: url(../images/ac-icon-menu.png);
+	}
 }
 
 .header-button-close {
-	background-image: url(../images/ac-icon-close.png);
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		background-image: url(../images/ac-icon-close.png);
+	}
+}
+
+.header-button-search-open,
+.header-button-navigation-open,
+.header-button-close {
+	.header-button-label {
+		margin-top: 26px;
+		text-transform: uppercase;
+	}
+}
+
+.header-button-search-open,
+.header-button-navigation-open,
+.header-button-close,
+.header-button-back {
+
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		font-size: 10px;
+		width: 50px;
+	}
+
+	@include media-query($ameriprise-screen-lg-min, null) {
+		display: none;
+	}
 }
 /* **************** header buttons **************** */
 /* **************** header/banner **************** */
 
 /* **************** NAVIGATION **************** */
-#navigationOverlay {
-	background-color: rgba(255, 255, 255, 0.5);
-	cursor: pointer;
-	height: 0;
-	left: 0;
-	opacity: 0;
-	position: fixed;
-	top: 0;
-	visibility: hidden;
-	width: 100%;
-	z-index: 1;
-
-
-	@include transition(opacity 0.5s ease);
-
-	&.opened {
-		height:100%;
-		opacity: 1;
+@include media-query(null, $ameriprise-screen-sm-max) {
+	#navigationOverlay {
+		background-color: rgba(255, 255, 255, 0.5);
+		cursor: pointer;
+		height: 0;
+		left: 0;
+		opacity: 0;
 		position: fixed;
-		right: 0;
 		top: 0;
-		visibility: visible;
+		visibility: hidden;
+		width: 100%;
 		z-index: 1;
+
+		@include transition(opacity 0.5s ease);
+
+		&.opened {
+			height:100%;
+			opacity: 1;
+			position: fixed;
+			right: 0;
+			top: 0;
+			visibility: visible;
+			z-index: 1;
+		}
 	}
 }
 
 #navigationWrapper{
-	height: 100%;
-	left: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 1;
-
-	.container, .row {
+	@include media-query(null, $ameriprise-screen-sm-max) {
 		height: 100%;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		.container, .row {
+			height: 100%;
+		}
 	}
 
 	.row {
-		@include media-query(null, $ameriprise-screen-xs-min) {
+		@include media-query(null, $ameriprise-screen-sm-max) {
+			@include transition(margin 0.33s ease);
+		}
+
+		@include media-query(null, $ameriprise-screen-xs-max) {
 			margin-left: 15%;
 		}
 
 		@include media-query($ameriprise-screen-sm-min, $ameriprise-screen-sm-max) {
-			margin-left: 50%;
+			margin-left: 60%;
 		}
 	}
 }
 
-
 #navigationSmallControls {
-	background-color: $ameriprise-blue;
-	// color: #FFF;
-	// font-family: $ameriprise-font-family;
-	// font-size: $ameriprise-font-size;
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		background-color: $ameriprise-blue;
+		border-bottom: 1px solid #A2A4A9;
 
-	&.row, & {
-		height: $header-height;
+		&.row, & {
+			height: $header-height;
+		}
+	}
+
+	@include media-query($ameriprise-screen-lg-min, null) {
+		display: none;
 	}
 }
 
 #navigation {
-	background-color: red; // DEBUG
-	height: 100%;
-
-	@include media-query(null, $ameriprise-screen-xs-min) {
-		// Implied
-	}
-
-	@include media-query($ameriprise-screen-sm-min, null) {
+	@include media-query(null, $ameriprise-screen-sm-max) {
+		background-color: $ameriprise-blue;
+		height: 100%;
 	}
 
 	@include media-query($ameriprise-screen-lg-min, null) {
 	}
 
 	.selected {
-		background-color: red; // DEBUG
+		background-color: #6284AB; // ???
+
+		@include media-query(null, $ameriprise-screen-sm-max) {
+		}
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+		}
 	}
 
 	.open {
 		background-color: blue; // DEBUG
+
+		@include media-query(null, $ameriprise-screen-sm-max) {
+		}
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+		}
 	}
 
 	.child-menu {
 		display: none;
+
+		@include media-query(null, $ameriprise-screen-sm-max) {
+		}
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+		}
 	}
 
 	.open .child-menu {
@@ -314,44 +363,101 @@ body {
 	}
 
 	ul {
-		height: 100%;
 		list-style: none;
-		overflow-y: auto;
 		padding: 0;
-	}
 
-	li {
-		background-color: #53626F;
-		border-top: 1px solid #A2A4A9;
-
-		a, span {
-			cursor: pointer;
-			display: block;
-			height: 40px;
-			min-height: 40px;
-			padding: 0 10px;
-		}
-	}
-
-
-	.lvl1 {
-		// width: 85%;
-	}
-
-	/* **************** HEADER NAV **************** */
-	/* **************** header nav **************** */
-
-	/* **************** LVL 1 NAV **************** */
-	.lvl1 {
-
-		@include media-query(null, $ameriprise-screen-xs-min) {
-			// Implied
-		}
-
-		@include media-query($ameriprise-screen-sm-min, null) {
+		@include media-query(null, $ameriprise-screen-sm-max) {
+			height: 100%;
+			overflow-y: auto;
 		}
 
 		@include media-query($ameriprise-screen-lg-min, null) {
+		}
+	}
+
+	/* **************** LVL N NAV **************** */
+	.lvl1, .lvl2, .lvl3 {
+		li {
+			@include media-query(null, $ameriprise-screen-sm-max) {
+				background-color: #53626F;
+				border-bottom: 1px solid #A2A4A9;
+			}
+
+			@include media-query($ameriprise-screen-lg-min, null) {
+			}
+		}
+
+		.glyphicon-chevron-right {
+			@include media-query(null, $ameriprise-screen-sm-max) {
+				position: absolute;
+				right: 10px;
+				top: 33%;
+			}
+
+			@include media-query($ameriprise-screen-lg-min, null) {
+				display: none;
+			}
+		}
+	}
+	/* **************** lvl n nav **************** */
+
+	/* **************** LVL 1 NAV **************** */
+	.lvl1 {
+		.menuitem-title {
+			cursor: pointer;
+			display: block;
+			font-family: $ameriprise-font-family;
+			text-decoration: none;
+
+			@include media-query(null, $ameriprise-screen-sm-max) {
+				color: #FFF;
+				font-size: 14px;
+				line-height: 1.3;
+				min-height: 40px;
+				padding: 14px 25px 8px 10px;
+				position: relative;
+				text-transform: uppercase;
+			}
+
+			@include media-query($ameriprise-screen-lg-min, null) {
+			}
+		}
+
+		.nav-footer {
+			@include media-query($ameriprise-screen-lg-min, null) {
+				display: none;
+			}
+			h2 {
+				background-color: #A2A4A9;
+				color: #000;
+				font-size: 10px;
+				line-height: 20px;
+				margin: 0;
+				padding: 0 10px;
+				text-transform: uppercase;
+			}
+
+			.menuitem-title {
+				text-transform: none;
+			}
+
+			.glyphicon {
+				padding-right: 5px;
+			}
+		}
+
+		#layoutNavLogout {
+			@include media-query($ameriprise-screen-lg-min, null) {
+				display: none;
+			}
+
+			.menuitem-title {
+				padding: 15px 20px;
+			}
+
+			button {
+				color: #000;
+			}
 		}
 	}
 	/* **************** lvl 1 nav **************** */
@@ -360,7 +466,7 @@ body {
 	.lvl2 {
 		background-color: yellow; // DEBUG
 
-		@include media-query(null, $ameriprise-screen-xs-min) {
+		@include media-query(null, $ameriprise-screen-xs-max) {
 			// Implied
 		}
 
@@ -376,7 +482,7 @@ body {
 	.lvl3 {
 		background-color: teal; // DEBUG
 
-		@include media-query(null, $ameriprise-screen-xs-min) {
+		@include media-query(null, $ameriprise-screen-xs-max) {
 			// Implied
 		}
 
@@ -392,14 +498,14 @@ body {
 	.lvl4 {
 		background-color: silver; // DEBUG
 
-		@include media-query(null, $ameriprise-screen-xs-min) {
-			// Implied
-		}
+		li {
+			@include media-query(null, $ameriprise-screen-sm-max) {
+				background-color: #A2A4A9; // TODO Check if correct
+				border-bottom: 1px solid #53626F; // TODO Check if correct
+			}
 
-		@include media-query($ameriprise-screen-sm-min, null) {
-		}
-
-		@include media-query($ameriprise-screen-lg-min, null) {
+			@include media-query($ameriprise-screen-lg-min, null) {
+			}
 		}
 	}
 	/* **************** lvl 4 nav **************** */
