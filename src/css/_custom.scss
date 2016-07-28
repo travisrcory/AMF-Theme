@@ -42,7 +42,7 @@ $has-customization-menu-margin-top-mobile: 48px;
 /* **************** variables **************** */
 
 /* **************** PAGE **************** */
-body, html, #wrapper, [id^="senna_surface"], .flipped, .senna_surface1-default {
+body, html, [id^="senna_surface"], .flipped, .senna_surface1-default {
 	height: 100%;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .advisor-compass-override.has-control-menu {
-	#banner {
+	#banner, #navigationWrapper {
 		top: $has-control-menu-margin-top-mobile;
 
 		@include sm() {
@@ -63,7 +63,7 @@ body {
 		}
 	}
 
-	&.has-customization-menu #banner {
+	&.has-customization-menu #banner, &.has-customization-menu #navigationWrapper {
 		top: ($has-control-menu-margin-top-mobile + $has-customization-menu-margin-top-mobile);
 
 		@include sm() {
@@ -89,7 +89,8 @@ body {
 }
 
 #wrapper {
-	background-color: gold; // DEBUG
+	// background-color: gold; // DEBUG
+	height: 100%;
 	margin-top: $header-height;
 }
 /* **************** page **************** */
@@ -106,6 +107,10 @@ body {
 	right: 0;
 	top: 0;
 	z-index: 1;
+
+	@include media-query(null, $screen-xs-max) {
+		// Implied
+	}
 
 	@include media-query($screen-sm-min, null) {
 		// background-color: yellow; // DEBUG
@@ -213,90 +218,69 @@ body {
 /* **************** header/banner **************** */
 
 /* **************** NAVIGATION **************** */
-#navigationWrapperOuter {
-	height: 100%;
-	right: 0;
-	position: fixed;
-	top: 0;
-	width: 270px;
-	z-index: 1;
-}
-
-#navigationCollapse {
-	background-color: green; // DEBUG
-	position: absolute;
-	right: 0;
-	height: 100%;
-}
-
-#navigationWrapperInner {
-	width: 270px;
-	overflow: hidden;
-	height: 100%;
-}
-
-.collapse.display,
-.collapse.overlay,
-.collapse.width {
-	display: none;
-}
-
-.collapse.in.display,
-.collapse.in.overlay,
-.collapse.in.width {
-	display: block;
-}
-
-.collapsing.display {
-	display: block;
-}
-
-.collapsing.overlay {
-	// @include transition(opacity 0.5s ease, visibility);
-	@include transition(opacity 0.5s ease);
-	opacity: 0;
-}
-
-.collapsing.width {
-	// @include transition(width 0.5s ease, visibility);
-	@include transition(width 0.5s ease);
-	width: 0;
-	height: auto;
-}
-
-#navigationCollapse {
-	// height: 100%;
-	// margin-left: 0;
-	// margin-right: 0;
-	// padding-left: 0;
-	// padding-right: 0;
-	// position: fixed;
-	// top: 0;
-	// left: 0;
-	// width: 100%;
-	// z-index: 1;
-}
-
 #navigationOverlay {
 	background-color: rgba(255, 255, 255, 0.5);
-	height:100%;
+	cursor: pointer;
+	height: 0;
 	left: 0;
+	opacity: 0;
 	position: fixed;
 	top: 0;
+	visibility: hidden;
 	width: 100%;
 	z-index: 1;
+
+
+	@include transition(opacity 0.5s ease);
+
+	&.opened {
+		height:100%;
+		opacity: 1;
+		position: fixed;
+		right: 0;
+		top: 0;
+		visibility: visible;
+		z-index: 1;
+	}
+}
+
+#navigationWrapper{
+	height: 100%;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1;
+
+	.container, .row {
+		height: 100%;
+	}
+
+	.row {
+		@include media-query(null, $screen-xs-max) {
+			margin-left: 15%;
+		}
+
+		@include media-query($screen-sm-min, $screen-md-max) {
+			margin-left: 50%;
+		}
+	}
+}
+
+
+#navigationSmallControls {
+	background-color: $ameriprise-blue;
+	// color: #FFF;
+	// font-family: $ameriprise-font-family;
+	// font-size: $ameriprise-font-size;
+
+	&.row, & {
+		height: $header-height;
+	}
 }
 
 #navigation {
 	background-color: red; // DEBUG
-
-	// overflow: hidden;
-
-	// height: 100%;
-	// position: relative;
-	// width: 85%;
-	// z-index: 1;
-
 
 	.selected {
 		background-color: red; // DEBUG
@@ -330,6 +314,10 @@ body {
 		// width: 85%;
 	}
 
+	@include media-query(null, $screen-xs-max) {
+		// Implied
+	}
+
 	@include media-query($screen-sm-min, null) {
 	}
 
@@ -344,6 +332,10 @@ body {
 
 	/* **************** LVL 1 NAV **************** */
 	.lvl1 {
+
+		@include media-query(null, $screen-xs-max) {
+			// Implied
+		}
 
 		@include media-query($screen-sm-min, null) {
 		}
@@ -360,6 +352,10 @@ body {
 	.lvl2 {
 		background-color: yellow; // DEBUG
 
+		@include media-query(null, $screen-xs-max) {
+			// Implied
+		}
+
 		@include media-query($screen-sm-min, null) {
 		}
 
@@ -375,6 +371,10 @@ body {
 	.lvl3 {
 		background-color: teal; // DEBUG
 
+		@include media-query(null, $screen-xs-max) {
+			// Implied
+		}
+
 		@include media-query($screen-sm-min, null) {
 		}
 
@@ -389,6 +389,10 @@ body {
 	/* **************** LVL 4 NAV **************** */
 	.lvl4 {
 		background-color: silver; // DEBUG
+
+		@include media-query(null, $screen-xs-max) {
+			// Implied
+		}
 
 		@include media-query($screen-sm-min, null) {
 		}
