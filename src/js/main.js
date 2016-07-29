@@ -93,35 +93,36 @@ AUI.add(
 						var instance = this;
 
 						if (navigation) {
-							navigation.delegate(['click'], instance._onMouseToggle, 'li', instance);
+							navigation.delegate(['click'], instance._onMouseToggle, '> li', instance);
 
 							navigation.delegate('keydown', instance._handleKeyDown, 'a', instance);
 						}
 					},
 
-					_initNodeFocusManager: function() {
-						var instance = this;
+					// _initNodeFocusManager: function() {
+					// 	console.log('_initNodeFocusManager()');
+					// 	var instance = this;
 
-						var host = instance.get('host');
+					// 	var host = instance.get('host');
 
-						host.plug(
-							A.Plugin.NodeFocusManager,
-							{
-								descendants: '.menuitem-title',  // TODO
-								focusClass: 'focused',
-								keys: {
-									next: 'down:40', // TODO
-									previous: 'down:38' // TODO
-								}
-							}
-						);
+					// 	host.plug(
+					// 		A.Plugin.NodeFocusManager,
+					// 		{
+					// 			descendants: '.menuitem-title',  // TODO
+					// 			focusClass: 'focused',
+					// 			keys: {
+					// 				next: 'down:40', // TODO
+					// 				previous: 'down:38' // TODO
+					// 			}
+					// 		}
+					// 	);
 
-						var focusManager = host.focusManager;
+					// 	var focusManager = host.focusManager;
 
-						focusManager.after(['activeDescendantChange', 'focusedChange'], instance._showMenu, instance);
+					// 	focusManager.after(['activeDescendantChange', 'focusedChange'], instance._showMenu, instance);
 
-						instance._focusManager = focusManager;
-					},
+					// 	instance._focusManager = focusManager;
+					// },
 
 					_onNavigationMenuToggle: function(event) {
 						var instance = this;

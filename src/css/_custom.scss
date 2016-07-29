@@ -258,14 +258,24 @@ body {
 		top: 0;
 		visibility: hidden;
 		width: 100%;
-		z-index: 1;
+		z-index: -1;
 
-		@include transition(opacity 0.5s ease);
+		@include transition(
+			height 0.0s 0.3s,
+			opacity 0.3s,
+			visibility 0.3s
+		);
 
 		&.open {
 			height:100%;
 			opacity: 1;
 			visibility: visible;
+
+			@include transition(
+				height 0.0s 0.0s,
+				opacity 0.3s,
+				visibility 0.3s
+			);
 		}
 	}
 }
@@ -368,7 +378,7 @@ body {
 	}
 
 	.child-menu {
-		display: none;
+		// display: none;
 
 		@include media-query(null, $ameriprise-screen-sm-max) {
 		}
@@ -378,7 +388,7 @@ body {
 	}
 
 	.open .child-menu {
-		display: block;
+		// display: block;
 	}
 
 	ul {
@@ -388,6 +398,9 @@ body {
 		@include media-query(null, $ameriprise-screen-sm-max) {
 			height: 100%;
 			overflow-y: auto;
+			position: absolute;
+			top: 0;
+			width: 100%;
 		}
 
 		@include media-query($ameriprise-screen-lg-min, null) {
@@ -395,7 +408,24 @@ body {
 	}
 
 	/* **************** LVL N NAV **************** */
+	.open {
+		&.lvl1, &.lvl2, &.lvl3 {
+			@include media-query(null, $ameriprise-screen-sm-max) {
+				margin-left: 0;
+			}
+		}
+	}
+
 	.lvl1, .lvl2, .lvl3 {
+		@include media-query(null, $ameriprise-screen-sm-max) {
+			@include transition(margin-left 0.5s ease);
+
+			margin-left: 90%; // DEBUG should be 100%
+		}
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+		}
+
 		li {
 			@include media-query(null, $ameriprise-screen-sm-max) {
 				// background-color: #53626F; // OFF DURRING DEBUG
@@ -406,7 +436,7 @@ body {
 			}
 		}
 
-		.glyphicon-chevron-right {
+		.glyphicon-chevron-right, .glyphicon-plus {
 			@include media-query(null, $ameriprise-screen-sm-max) {
 				position: absolute;
 				right: 10px;
@@ -485,7 +515,7 @@ body {
 
 	/* **************** LVL 2 NAV **************** */
 	.lvl2 {
-		background-color: yellow; // DEBUG
+		background-color: orange; // DEBUG
 
 		@include media-query(null, $ameriprise-screen-sm-max) {
 		}
@@ -516,7 +546,7 @@ body {
 
 	/* **************** LVL 4 NAV **************** */
 	.lvl4 {
-		background-color: silver; // DEBUG
+		background-color: purple; // DEBUG
 
 		li {
 			@include media-query(null, $ameriprise-screen-sm-max) {

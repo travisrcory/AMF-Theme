@@ -1,6 +1,7 @@
-<div id="navigationOverlay" class="open navigation-toggle-trigger navigation-toggle-target" aria-expanded="false" aria-controls="navigation"></div>
 
-<div id="navigationWrapper" class="open navigation-toggle-target">
+<div id="navigationWrapper" class="navigation-toggle-target">
+	<div id="navigationOverlay" class="navigation-toggle-trigger navigation-toggle-target" aria-expanded="false" aria-controls="navigation"></div>
+
 	<div class="container">
 		<div class="row" id="navigationSmallControls">
 			<div class="pull-left">
@@ -71,6 +72,8 @@
 											<#else>
 												<span class="menuitem-title" aria-labelledby="layout_${nav_child_lvl2.getLayoutId()}" ${nav_child_lvl2_attr_has_popup} role="menuitem">
 													${nav_child_lvl2.getName()}
+
+													<span class="glyphicon glyphicon-chevron-right"></span>
 												</span>
 
 												<#-- LVL3 NAV -->
@@ -94,6 +97,8 @@
 															<#else>
 																<span class="menuitem-title" aria-labelledby="layout_${nav_child_lvl3.getLayoutId()}" ${nav_child_lvl3_attr_has_popup} role="menuitem">
 																	${nav_child_lvl3.getName()}
+
+																	<span class="glyphicon glyphicon glyphicon-plus"></span>
 																</span>
 
 																<#-- LVL4 NAV -->
