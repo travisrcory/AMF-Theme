@@ -205,7 +205,7 @@
 						<h2>${languageUtil.get(locale, "active-profile")}:</h2>
 
 						<span class="menuitem-title" aria-labelledby="layoutNavActiveProfile" role="menuitem">
-							${"Firstname"} ${"Lastname"}
+							<@liferay.language_format arguments="${user_name}" key="welcome-x" />
 
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</span>
