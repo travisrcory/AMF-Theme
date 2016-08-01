@@ -79,7 +79,7 @@
 
 				<#if is_signed_in>
 					<span class="user-full-name-greeting">
-						<@liferay.language_format arguments="${user_name}" key="welcome-x" />
+						<@liferay.language key="welcome" />, ${user_name}
 					</span>
 
 					<a href="${sign_out_url}">
