@@ -216,6 +216,8 @@ body {
 		}
 
 		input {
+			border-radius: 0;
+
 			@include placeholder {
 				color: #000;
 			}
