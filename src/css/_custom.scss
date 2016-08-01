@@ -1,3 +1,6 @@
+@import "bourbon";
+@import "mixins";
+
 /* These inject tags are used for dynamically creating imports for themelet styles, you can place them where ever you like in this file. */
 
 /* inject:imports */
@@ -116,6 +119,16 @@ body {
 	top: 0;
 	z-index: 1;
 
+	@include media-query($ameriprise-screen-lg-min, null) {
+		.container {
+			display: table;
+		}
+
+		.row {
+			display: table-cell;
+		}
+	}
+
 	/* **************** LOGO **************** */
 	.site-title {
 		margin: 0;
@@ -139,9 +152,36 @@ body {
 		}
 	}
 	/* **************** logo **************** */
+
+	/* **************** Right Icons **************** */
+
+
+	.banner-contact-container {
+		display: none;
+		padding: 10px 0;
+
+		@include media-query($ameriprise-screen-lg-min, null) {
+			display: table-cell;
+		}
+	}
+
+	.user-full-name-greeting {
+		margin: 0 15px;
+		text-transform: capitalize;
+	}
+
+
+	a {
+		color: inherit;
+		margin: 0 10px;
+		text-transform: capitalize;
+
+		&:hover, &:focus {
+			color: #FFF;
+			text-decoration: none;
+		}
+	}
 }
-
-
 
 /* **************** SEARCH **************** */
 #searchCollapse {
@@ -149,6 +189,10 @@ body {
 	background-color: #6284AB;
 	// position: relative;
 	clear: both;
+
+	@include media-query($ameriprise-screen-lg-min, null) {
+		display: inline;
+	}
 }
 
 #search {
@@ -181,6 +225,35 @@ body {
 
 	.portlet-topper {
 		// position: absolute;
+	}
+
+	@include media-query($ameriprise-screen-lg-min, null) {
+		height: 50px;
+
+		div, section {
+			height: 100%;
+		}
+
+		.taglib-icon {
+			display: none;
+		}
+
+		.portlet:hover>.portlet-topper, .portlet.focus>.portlet-topper {
+			border-radius: 0;
+
+			@include transform(translateY(97%));
+		}
+
+		.form-group {
+			margin: 8px 0 10px 0;
+			width: 100%;
+		}
+
+		input {
+			@include placeholder {
+				color: #000;
+			}
+		}
 	}
 }
 /* **************** search **************** */
