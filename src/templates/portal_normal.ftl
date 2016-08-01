@@ -34,7 +34,7 @@
 				<#-- logo -->
 
 				<#-- NAVIGATION -->
-				<div class="pull-right">
+				<div class="pull-right hidden-md hidden-lg">
 					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open navigation-toggle-trigger" data-target=".navigationCollapse" data-toggle="collapse" type="button">
 						<span class="header-button-label">Menu</span>
 					</button>
@@ -42,7 +42,7 @@
 				<#-- navigation -->
 
 				<#-- SEARCH -->
-				<div class="pull-right">
+				<div class="pull-right hidden-md hidden-lg">
 					<button aria-controls="search" aria-expanded="false" class="header-button header-button-search-open" data-target="#searchCollapse" data-toggle="collapse" type="button">
 						<span class="header-button-label">Search</span>
 					</button>
@@ -62,6 +62,34 @@
 					</div>
 				</div>
 				<#-- search -->
+			</div>
+
+			<div class="hidden-sx hidden-sm banner-contact-container pull-right">
+				<a aria-labelledby="email" href="#" role="menuitem">
+					<span class="glyphicon glyphicon-envelope"></span>
+
+					<@liferay.language key="email" />
+				</a>
+
+				<a aria-labelledby="contact" href="#" role="menuitem">
+					<span class="glyphicon glyphicon-user"></span>
+
+					<@liferay.language key="contact" />
+				</a>
+
+				<#if is_signed_in>
+					<span class="user-full-name-greeting">
+						<@liferay.language_format arguments="${user_name}" key="welcome-x" />
+					</span>
+
+					<a href="${sign_out_url}">
+						<@liferay.language key="logout" />
+					</a>
+				<#else>
+					<a href="${sign_in_url}">
+						<@liferay.language key="login" />
+					</a>
+				</#if>
 			</div>
 		</div>
 	</header>
