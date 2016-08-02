@@ -32,22 +32,6 @@
 					</h1>
 				</div>
 				<#-- logo -->
-
-				<#-- NAVIGATION -->
-				<div class="pull-right hidden-md hidden-lg">
-					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open navigation-toggle-trigger" data-target=".navigationCollapse" data-toggle="collapse" type="button">
-						<span class="header-button-label">Menu</span>
-					</button>
-				</div>
-				<#-- navigation -->
-
-				<#-- SEARCH -->
-				<div class="pull-right hidden-md hidden-lg">
-					<button aria-controls="search" aria-expanded="false" class="header-button header-button-search-open" data-target="#searchCollapse" data-toggle="collapse" type="button">
-						<span class="header-button-label">Search</span>
-					</button>
-				</div>
-				<#-- search -->
 			</div>
 
 			<div class="row">
@@ -60,6 +44,24 @@
 
 						<#assign VOID = freeMarkerPortletPreferences.reset()>
 					</div>
+				</div>
+				<#-- search -->
+			</div>
+
+			<div class="row">
+				<#-- NAVIGATION -->
+				<div class="pull-right hidden-lg">
+					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open navigation-toggle-trigger" data-target=".navigationCollapse" data-toggle="collapse" type="button">
+						<span class="header-button-label">Menu</span>
+					</button>
+				</div>
+				<#-- navigation -->
+
+				<#-- SEARCH -->
+				<div class="pull-right hidden-md hidden-lg">
+					<button aria-controls="search" aria-expanded="false" class="header-button header-button-search-open" data-target="#searchCollapse" data-toggle="collapse" type="button">
+						<span class="header-button-label">Search</span>
+					</button>
 				</div>
 				<#-- search -->
 			</div>
