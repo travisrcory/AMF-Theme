@@ -85,7 +85,7 @@ body {
 	top: 0;
 	z-index: 1;
 
-	@include media-query($ameriprise-screen-lg-min, null) {
+	@include media-query($screen-lg-min, null) {
 		.container {
 			display: table;
 		}
@@ -126,7 +126,7 @@ body {
 		display: none;
 		padding: 10px 0;
 
-		@include media-query($ameriprise-screen-lg-min, null) {
+		@include media-query($screen-lg-min, null) {
 			display: table-cell;
 		}
 	}
@@ -156,7 +156,7 @@ body {
 	// position: relative;
 	clear: both;
 
-	@include media-query($ameriprise-screen-lg-min, null) {
+	@include media-query($screen-lg-min, null) {
 		display: inline;
 	}
 }
@@ -193,7 +193,7 @@ body {
 		// position: absolute;
 	}
 
-	@include media-query($ameriprise-screen-lg-min, null) {
+	@include media-query($screen-lg-min, null) {
 		height: 50px;
 
 		div, section {
