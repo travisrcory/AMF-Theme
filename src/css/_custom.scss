@@ -241,7 +241,7 @@ body {
 		.portlet:hover>.portlet-topper, .portlet.focus>.portlet-topper {
 			border-radius: 0;
 
-			@include transform(translateY(97%));
+			@include transform(translateY(110%));
 		}
 
 		.form-group {
