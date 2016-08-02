@@ -23,8 +23,8 @@
 <div id="wrapper">
 	<#-- HEADER/BANNER -->
 	<header id="banner" role="banner">
-		<div class="container">
-			<div class="row">
+		<div class="container display-table w100">
+			<div class="row display-table-cell">
 				<#-- LOGO -->
 				<div id="heading" class="pull-left">
 					<h1 class="site-title">
@@ -34,7 +34,7 @@
 				<#-- logo -->
 			</div>
 
-			<div class="row">
+			<div class="row header-search-container">
 				<#-- SEARCH -->
 				<div aria-expanded="false" class="collapse" id="searchCollapse">
 					<div id="search" role="search">
@@ -48,7 +48,7 @@
 				<#-- search -->
 			</div>
 
-			<div class="row">
+			<div class="row display-table-cell">
 				<#-- NAVIGATION -->
 				<div class="pull-right hidden-lg">
 					<button aria-controls="navigation" aria-expanded="false" class="header-button header-button-navigation-open navigation-toggle-trigger" data-target=".navigationCollapse" data-toggle="collapse" type="button">
@@ -58,7 +58,7 @@
 				<#-- navigation -->
 
 				<#-- SEARCH -->
-				<div class="pull-right hidden-md hidden-lg">
+				<div class="pull-right hidden-md hidden-sm hidden-lg">
 					<button aria-controls="search" aria-expanded="false" class="header-button header-button-search-open" data-target="#searchCollapse" data-toggle="collapse" type="button">
 						<span class="header-button-label">Search</span>
 					</button>
@@ -88,7 +88,7 @@
 						<@liferay.language key="logout" />
 					</a>
 				<#else>
-					<a href="${sign_in_url}">
+					<a class="sign-in" href="${sign_in_url}">
 						<@liferay.language key="login" />
 					</a>
 				</#if>
