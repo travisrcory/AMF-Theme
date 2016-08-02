@@ -72,9 +72,13 @@
 											<#assign nav_child_lvl2_class_selected = "selected" />
 										</#if>
 
+										<#if !nav_item_lvl1.hasChildren()>
+											<#assign nav_child_lvl2_class_selected = nav_child_lvl2_class_selected + " no-children-item" />
+										</#if>
+
 										<li ${nav_child_lvl2_attr_selected} class="${nav_child_lvl2_class_selected}" id="layout_${nav_child_lvl2.getLayoutId()}" role="presentation">
 											<#if !nav_child_lvl2.hasChildren()>
-												<a class="menuitem-title" aria-labelledby="layout_${nav_child_lvl2.getLayoutId()}" href="${nav_child_lvl2.getURL()}" ${nav_child_lvl2.getTarget()} role="menuitem">
+												<a class="menuitem-title menuitem-title-level-2" aria-labelledby="layout_${nav_child_lvl2.getLayoutId()}" href="${nav_child_lvl2.getURL()}" ${nav_child_lvl2.getTarget()} role="menuitem">
 													${nav_child_lvl2.getName()}
 												</a>
 											<#else>
@@ -89,12 +93,12 @@
 													<#list nav_child_lvl2.getChildren() as nav_child_lvl3>
 														<#assign nav_child_lvl3_attr_has_popup = "" />
 														<#assign nav_child_lvl3_attr_selected = "" />
-														<#assign nav_child_lvl3_class_selected = "" />
+														<#assign nav_child_lvl3_class_selected = "col-md-3" />
 
 														<#if nav_child_lvl2.isSelected()>
 															<#assign nav_child_lvl3_attr_has_popup = "aria-haspopup='true'" />
 															<#assign nav_child_lvl3_attr_selected = "aria-selected='true'" />
-															<#assign nav_child_lvl3_class_selected = "selected" />
+															<#assign nav_child_lvl3_class_selected = nav_child_lvl3_class_selected + " selected" />
 														</#if>
 
 														<li ${nav_child_lvl3_attr_selected} class="${nav_child_lvl3_class_selected}" id="layout_${nav_child_lvl3.getLayoutId()}" role="presentation">
