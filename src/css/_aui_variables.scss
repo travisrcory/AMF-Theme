@@ -1,0 +1,63 @@
+// Icon paths
+
+$FontAwesomePath: "aui/lexicon/fonts/alloy-font-awesome/font";
+$font-awesome-path: "aui/lexicon/fonts/alloy-font-awesome/font";
+$icon-font-path: "aui/lexicon/fonts/";
+
+// Copied from:
+// modules\apps\foundation\frontend-css\frontend-css-common\src\main\resources\META-INF\resources\liferay\_variables.scss
+$screen-lg: 1200px;
+$screen-lg-min: $screen-lg;
+$screen-lg-desktop: $screen-lg-min;
+
+$screen-md: 992px;
+$screen-md-min: $screen-md;
+$screen-desktop: $screen-md-min;
+
+$screen-sm: 770px;
+$screen-sm-min: $screen-sm;
+$screen-tablet: $screen-sm-min;
+
+$screen-xs: 320px;
+$screen-xs-min: $screen-xs;
+$screen-phone: $screen-xs-min;
+
+$screen-md-max: ($screen-lg-min - 1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-xs-max: ($screen-sm-min - 1);
+
+$media-query-sizes: (
+	xs: $screen-xs,
+	sm: $screen-sm,
+	md: $screen-md,
+	lg: $screen-lg
+);
+
+$breakpoint_phone: $screen-sm; // Deprecated
+$breakpoint_tablet: $screen-md; // Deprecated
+// ------------------------ //
+
+// Copied from:
+// modules\apps\foundation\frontend-theme\frontend-theme-unstyled\src\main\resources\META-INF\resources\_unstyled\css\aui\lexicon\bootstrap\_variables.scss
+
+// Grid system. Define your custom responsive grid.
+$grid-gutter-width: 30px; // Padding between columns. Gets divided in half for the left and right.
+// $grid-float-breakpoint: $screen-sm-min; // Point at which the navbar becomes uncollapsed
+// $grid-float-breakpoint-max: ($grid-float-breakpoint - 1); // Point at which the navbar begins collapsing.
+
+// Container sizes. Define the maximum width of `.container` for different screen sizes.
+$container-tablet: ($screen-sm - $grid-gutter-width); // Small screen / tablet
+$container-sm: $container-tablet; //** For `$screen-sm-min` and up.
+$container-desktop: ($screen-md - $grid-gutter-width); // Medium screen / desktop
+$container-md: $container-desktop; //** For `$screen-md-min` and up.
+$container-large-desktop: ($screen-lg - $grid-gutter-width); // Large screen / wide desktop
+$container-lg: $container-large-desktop; //** For `$screen-lg-min` and up.
+// ------------------------ //
+
+// Copied from:
+// modules\apps\web-experience\product-navigation\product-navigation-control-menu-theme-contributor\src\main\resources\META-INF\resources\control_menu\_variables.scss
+$has-control-menu-margin-top-desktop: 64px;
+$has-control-menu-margin-top-mobile: 48px;
+$has-customization-menu-margin-top-desktop: 64px;
+$has-customization-menu-margin-top-mobile: 48px;
+// ------------------------ //
