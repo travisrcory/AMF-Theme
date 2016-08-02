@@ -144,6 +144,54 @@
 						</a>
 					</li>
 
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
+					<li role="presentation" class="nav-footer" id="layoutNavContacts">
+						<a class="menuitem-title" aria-labelledby="layoutNavContacts" href="#" role="menuitem">
+							<span class="glyphicon glyphicon-user"></span>
+
+							${languageUtil.get(locale, "contacts")}
+						</a>
+					</li>
+
 					<li role="presentation" class="nav-footer" id="layoutNavEmail">
 						<a class="menuitem-title" aria-labelledby="layoutNavEmail" href="#" role="menuitem">
 							<span class="glyphicon glyphicon-envelope"></span>
