@@ -41,18 +41,26 @@
 
 						<li ${nav_item_lvl1_attr_selected} class="${nav_item_lvl1_class_selected}" id="layout_${nav_item_lvl1.getLayoutId()}" role="presentation">
 							<#if !nav_item_lvl1.hasChildren()>
-								<a class="menuitem-title" aria-labelledby="layout_${nav_item_lvl1.getLayoutId()}" ${nav_item_lvl1_attr_has_popup} href="${nav_item_lvl1.getURL()}" ${nav_item_lvl1.getTarget()} role="menuitem">
+								<a class="menuitem-title menuitem-title-level-1" aria-labelledby="layout_${nav_item_lvl1.getLayoutId()}" ${nav_item_lvl1_attr_has_popup} href="${nav_item_lvl1.getURL()}" ${nav_item_lvl1.getTarget()} role="menuitem">
 									<@liferay_theme["layout-icon"] layout=nav_item_lvl1_layout /> ${nav_item_lvl1.getName()}
 								</a>
+
+								<svg class="lexicon-icon selected-up-caret selected-caret hidden-sm hidden-xs">
+									<use xlink:href="${images_folder}/lexicon/icons.svg#caret-top" />
+								</svg>
 							<#else>
-								<span class="menuitem-title" aria-labelledby="layout_${nav_item_lvl1.getLayoutId()}" ${nav_item_lvl1_attr_has_popup} ${nav_item_lvl1.getTarget()} role="menuitem">
+								<button class="menuitem-title btn-transparent menuitem-title-level-1" aria-expanded="false" aria-labelledby="layout_${nav_item_lvl1.getLayoutId()}" ${nav_item_lvl1_attr_has_popup} ${nav_item_lvl1.getTarget()} data-target="#layout_child_${nav_item_lvl1.getLayoutId()}" data-toggle="collapse" role="menuitem"  type="button">
 									<@liferay_theme["layout-icon"] layout=nav_item_lvl1_layout /> ${nav_item_lvl1.getName()}
 
 									<span class="glyphicon glyphicon-chevron-right"></span>
-								</span>
+
+									<svg class="lexicon-icon selected-down-caret selected-caret hidden-sm hidden-xs">
+										<use xlink:href="${images_folder}/lexicon/icons.svg#caret-bottom" />
+									</svg>
+								</button>
 
 								<#-- LVL2 NAV -->
-								<ul class="child-menu lvl2" role="menu">
+								<ul aria-expanded="false"  class="child-menu collapse lvl2" id="layout_child_${nav_item_lvl1.getLayoutId()}" role="menu">
 									<#list nav_item_lvl1.getChildren() as nav_child_lvl2>
 										<#assign nav_child_lvl2_attr_has_popup = "" />
 										<#assign nav_child_lvl2_attr_selected = "" />
@@ -70,11 +78,11 @@
 													${nav_child_lvl2.getName()}
 												</a>
 											<#else>
-												<span class="menuitem-title" aria-labelledby="layout_${nav_child_lvl2.getLayoutId()}" ${nav_child_lvl2_attr_has_popup} role="menuitem">
+												<a class="menuitem-title menuitem-title-level-2" aria-labelledby="layout_${nav_child_lvl2.getLayoutId()}" ${nav_child_lvl2_attr_has_popup} href="javascript:;" role="menuitem">
 													${nav_child_lvl2.getName()}
 
 													<span class="glyphicon glyphicon-chevron-right"></span>
-												</span>
+												</a>
 
 												<#-- LVL3 NAV -->
 												<ul class="child-menu lvl3" role="menu">
@@ -91,11 +99,11 @@
 
 														<li ${nav_child_lvl3_attr_selected} class="${nav_child_lvl3_class_selected}" id="layout_${nav_child_lvl3.getLayoutId()}" role="presentation">
 															<#if !nav_child_lvl3.hasChildren()>
-																<a class="menuitem-title" aria-labelledby="layout_${nav_child_lvl3.getLayoutId()}" href="${nav_child_lvl3.getURL()}" ${nav_child_lvl3.getTarget()} role="menuitem">
+																<a class="menuitem-title menuitem-title-level-3" aria-labelledby="layout_${nav_child_lvl3.getLayoutId()}" href="${nav_child_lvl3.getURL()}" ${nav_child_lvl3.getTarget()} role="menuitem">
 																	${nav_child_lvl3.getName()}
 																</a>
 															<#else>
-																<span class="menuitem-title" aria-labelledby="layout_${nav_child_lvl3.getLayoutId()}" ${nav_child_lvl3_attr_has_popup} role="menuitem">
+																<span class="menuitem-title menuitem-title-level-3" aria-labelledby="layout_${nav_child_lvl3.getLayoutId()}" ${nav_child_lvl3_attr_has_popup} role="menuitem">
 																	${nav_child_lvl3.getName()}
 
 																	<span class="glyphicon glyphicon glyphicon-plus"></span>
@@ -115,7 +123,7 @@
 																		</#if>
 
 																		<li ${nav_child_lvl4_attr_selected} class="${nav_child_lvl4_class_selected}" id="layout_${nav_child_lvl4.getLayoutId()}" role="presentation">
-																			<a class="menuitem-title" aria-labelledby="layout_${nav_child_lvl4.getLayoutId()}" href="${nav_child_lvl4.getURL()}" ${nav_child_lvl4.getTarget()} role="menuitem">
+																			<a class="menuitem-title menuitem-title-level-4" aria-labelledby="layout_${nav_child_lvl4.getLayoutId()}" href="${nav_child_lvl4.getURL()}" ${nav_child_lvl4.getTarget()} role="menuitem">
 																				${nav_child_lvl4.getName()}
 																			</a>
 																		</li>

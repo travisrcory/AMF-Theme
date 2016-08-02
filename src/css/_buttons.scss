@@ -1,0 +1,19 @@
+.btn-transparent {
+	background: none;
+	background-image: none;
+	border-width: 0;
+	box-shadow: none;
+	filter: none;
+	margin: 0;
+	padding: 0;
+	text-shadow: none;
+
+	&:hover, &:focus {
+		background: none;
+		background-image: none;
+		border-width: 0;
+		box-shadow: none;
+		filter: none;
+		text-shadow: none;
+	}
+}

@@ -8,8 +8,13 @@
 
 /* This file allows you to override default styles in one central location for easier upgrade and maintenance. */
 
+/* **************** IMPORTS **************** */
+@import "fonts/fonts";
+@import "buttons";
+/* **************** imports **************** */
 /* **************** VARIABLES **************** */
 $ameriprise-blue: #003D6D;
+$ameriprise-gray: #A1A3A8;
 $ameriprise-font-family: "ITCFRANKGOFORAMERIPRISE-BOOK";
 $header-height: 50px;
 /* **************** variables **************** */
@@ -71,12 +76,12 @@ body {
 	padding-top: $header-height;
 }
 
-.display-table-cell {
-	display: table-cell;
-}
-
 .display-table {
 	display: table;
+}
+
+.display-table-cell {
+	display: table-cell;
 }
 
 /* **************** page **************** */
@@ -374,6 +379,8 @@ body {
 
 	@include media-query($screen-lg-min, null) {
 		background-color: #FFF;
+		border-bottom: 1px $ameriprise-gray solid;
+		position: relative;
 	}
 
 	.container {
@@ -420,6 +427,8 @@ body {
 	}
 
 	@include media-query($screen-lg-min, null) {
+		display: table;
+		width: 100%;
 	}
 
 	.tagline {
@@ -429,6 +438,7 @@ body {
 
 		@include media-query($screen-lg-min, null) {
 			color: $gray-base;
+			display: table-cell;
 			font-size: 18pt;
 		}
 	}
@@ -462,6 +472,7 @@ body {
 		}
 
 		@include media-query($screen-lg-min, null) {
+			text-align: left;
 		}
 	}
 
@@ -544,13 +555,11 @@ body {
 
 	/* **************** LVL 1 NAV **************** */
 	.lvl1 {
-		background-color: red; // DEBUG
-
 		.menuitem-title {
-			cursor: pointer;
-			display: block;
+			color: $gray-base;
 			font-family: $ameriprise-font-family;
 			text-decoration: none;
+			position: relative;
 
 			@include media-query(null, $screen-md-max) {
 				color: #FFF;
@@ -561,8 +570,56 @@ body {
 				position: relative;
 				text-transform: uppercase;
 			}
+		}
 
-			@include media-query($screen-lg-min, null) {
+		@include media-query($screen-lg-min, null) {
+			display: table-cell;
+			text-align: right;
+			width: 75%;
+
+			> li {
+				display: inline-block;
+				margin: 0 10px;
+				padding: 0.5em;
+
+				&.open::after {
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 10px solid #000;
+					content: '\a';
+					height: 0;
+					left: 50%;
+					position: absolute;
+					top: 100%;
+					width: 0;
+				}
+
+				&.open > .menuitem-title {
+					position: relative;
+
+					&::after {
+						border-left: 10px solid transparent;
+						border-right: 10px solid transparent;
+						border-top: 10px solid #000;
+						content: '\a';
+						height: 0;
+						left: 50%;
+						position: absolute;
+						top: 100%;
+						width: 0;
+					}
+				}
+
+				.menuitem-title.active::after {
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-top: 10px solid #FFF;
+					height: 0;
+					left: 50%;
+					position: absolute;
+					top: 100%;
+					width: 0;
+				}
 			}
 		}
 
@@ -613,8 +670,24 @@ body {
 		}
 
 		@include media-query($screen-lg-min, null) {
+			left: 0;
+			position: absolute;
+			top: 100%;
+			width: 100%;
+
+			> li {
+				display: table;
+				position: relative;
+				width: 100%;
+			}
 		}
 	}
+
+	.menuitem-title-level-2 {
+		display: table-cell;
+		width: 15%;
+	}
+
 	/* **************** lvl 2 nav **************** */
 
 	/* **************** LVL 3 NAV **************** */
@@ -632,6 +705,26 @@ body {
 		}
 
 		@include media-query($screen-lg-min, null) {
+			display: table-cell;
+			width: 85%;
+
+			> li {
+				display: table-cell;
+				padding: 0 1em;
+			}
+
+			> .menuitem-title {
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.menuitem-title-level-3 {
+		text-transform: uppercase;
+	}
+
+	.open .lvl3 {
+		@include media-query($screen-lg-min, null) {
 		}
 	}
 	/* **************** lvl 3 nav **************** */
@@ -647,11 +740,30 @@ body {
 			}
 
 			@include media-query($screen-lg-min, null) {
+				display: block;
+				margin: 3px 0;
 			}
 		}
 	}
 	/* **************** lvl 4 nav **************** */
 }
+
+.selected-up-caret {
+	fill: $ameriprise-gray;
+}
+
+.selected-down-caret {
+	fill: #FFF;
+	stroke: $ameriprise-gray;
+}
+
+.selected-caret {
+	left: 50%;
+	position: absolute;
+
+	@include transform(translateY(-50%));
+}
+
 /* **************** navigation **************** */
 
 /* **************** CONTENT **************** */
