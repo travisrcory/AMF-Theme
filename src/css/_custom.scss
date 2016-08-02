@@ -104,6 +104,15 @@ body {
 	margin-top: 0;
 	padding-top: $header-height;
 }
+
+.display-table-cell {
+	display: table-cell;
+}
+
+.display-table {
+	display: table;
+}
+
 /* **************** page **************** */
 
 /* **************** HEADER/BANNER **************** */
@@ -119,13 +128,12 @@ body {
 	top: 0;
 	z-index: 1;
 
-	@include media-query($ameriprise-screen-lg-min, null) {
-		.container {
-			display: table;
-		}
-
-		.row {
-			display: table-cell;
+	@include media-query(null, $ameriprise-screen-xs-max) {
+		.header-search-container {
+			left: 15px;
+			position: absolute;
+			top: 100%;
+			width: 100%;
 		}
 	}
 
@@ -190,12 +198,16 @@ body {
 	// position: relative;
 	clear: both;
 
-	@include media-query($ameriprise-screen-lg-min, null) {
+	@include media-query($ameriprise-screen-sm-min, null) {
+		background-color: transparent;
 		display: inline;
+		float: right;
 	}
 }
 
 #search {
+	height: 50px;
+
 	// padding: 10px;
 	// position: absolute;
 	// top: $header-height;
@@ -227,34 +239,57 @@ body {
 		// position: absolute;
 	}
 
-	@include media-query($ameriprise-screen-lg-min, null) {
-		height: 50px;
+	div, section {
+		height: 100%;
+	}
 
-		div, section {
-			height: 100%;
+	.lexicon-icon-search {
+		fill: $gray-base;
+	}
+
+	.lfr-ddm-field-group-inline {
+		margin: 0;
+		position: absolute;
+		right: 0;
+		top: 8px;
+	}
+
+	.form-group {
+		margin: 8px 0 10px 0;
+		width: 100%;
+	}
+
+	input {
+		border-radius: 0;
+		height: 35px;
+
+		@include placeholder {
+			color: $gray-base;
 		}
+	}
 
-		.taglib-icon {
-			display: none;
+	.fieldset {
+		margin: 0 auto
+		position: relative;
+	}
+
+	@include media-query(null, $ameriprise-screen-xs-max) {
+		.fieldset {
+			width: 95%;
 		}
+	}
 
+	@include media-query($ameriprise-screen-sm-min, null) {
 		.portlet:hover>.portlet-topper, .portlet.focus>.portlet-topper {
 			border-radius: 0;
 
 			@include transform(translateY(110%));
 		}
+	}
 
-		.form-group {
-			margin: 8px 0 10px 0;
-			width: 100%;
-		}
-
-		input {
-			border-radius: 0;
-
-			@include placeholder {
-				color: #000;
-			}
+	@include media-query($ameriprise-screen-lg-min, null) {
+		.taglib-icon {
+			display: none;
 		}
 	}
 }
@@ -427,7 +462,7 @@ body {
 		}
 
 		@include media-query($ameriprise-screen-lg-min, null) {
-			color: #000;
+			color: $gray-base;
 			font-size: 18pt;
 		}
 	}
@@ -555,7 +590,7 @@ body {
 			}
 			h2 {
 				background-color: #A2A4A9;
-				color: #000;
+				color: $gray-base;
 				font-size: 10px;
 				line-height: 20px;
 				margin: 0;
@@ -582,7 +617,7 @@ body {
 			}
 
 			button {
-				color: #000;
+				color: $gray-base;
 			}
 		}
 	}
