@@ -1,11 +1,17 @@
 AUI().ready(
-
+	'aui-base',
+	'liferay-sign-in-modal',
 	/*
 	This function gets loaded when all the HTML, not including the portlets, is
 	loaded.
 	*/
 
-	function() {
+	function(A) {
+		var signIn = A.one('.sign-in');
+
+		if (signIn) {
+			signIn.plug(Liferay.SignInModal);
+		}
 	}
 );
 
