@@ -39,6 +39,11 @@
 							<#assign nav_item_lvl1_class_selected = "selected" />
 						</#if>
 
+						<#if !nav_item_lvl1.hasChildren()>
+							<#assign nav_item_lvl1_class_selected = nav_item_lvl1_class_selected + " no-children-item" />
+						</#if>
+
+
 						<li ${nav_item_lvl1_attr_selected} class="${nav_item_lvl1_class_selected}" id="layout_${nav_item_lvl1.getLayoutId()}" role="presentation">
 							<#if !nav_item_lvl1.hasChildren()>
 								<a class="menuitem-title menuitem-title-level-1" aria-labelledby="layout_${nav_item_lvl1.getLayoutId()}" ${nav_item_lvl1_attr_has_popup} href="${nav_item_lvl1.getURL()}" ${nav_item_lvl1.getTarget()} role="menuitem">
@@ -70,10 +75,6 @@
 											<#assign nav_child_lvl2_attr_has_popup = "aria-haspopup='true'" />
 											<#assign nav_child_lvl2_attr_selected = "aria-selected='true'" />
 											<#assign nav_child_lvl2_class_selected = "selected" />
-										</#if>
-
-										<#if !nav_item_lvl1.hasChildren()>
-											<#assign nav_child_lvl2_class_selected = nav_child_lvl2_class_selected + " no-children-item" />
 										</#if>
 
 										<li ${nav_child_lvl2_attr_selected} class="${nav_child_lvl2_class_selected}" id="layout_${nav_child_lvl2.getLayoutId()}" role="presentation">

@@ -477,9 +477,8 @@ body {
 	}
 
 	.open {
-		background-color: blue; // DEBUG
-
 		@include media-query(null, $screen-md-max) {
+			background-color: blue; // DEBUG
 		}
 
 		@include media-query($screen-lg-min, null) {
@@ -688,8 +687,6 @@ body {
 
 	/* **************** LVL 3 NAV **************** */
 	.lvl3 {
-		background-color: #FFF; // DEBUG
-
 		@include media-query(null, $screen-md-max) {
 			// background-color: $ameriprise-blue;
 			// height: 100%;
@@ -732,7 +729,9 @@ body {
 
 	/* **************** LVL 4 NAV **************** */
 	.lvl4 {
-		background-color: purple; // DEBUG
+		@include media-query(null, $screen-md-max) {
+			background-color: purple; // DEBUG
+		}
 
 		li {
 			@include media-query(null, $screen-md-max) {
@@ -751,15 +750,18 @@ body {
 
 .selected-up-caret {
 	fill: $ameriprise-gray;
-	top: 25px;
+	top: 30px;
 }
 
 .selected-down-caret {
 	fill: #FFF;
 	stroke: $ameriprise-gray;
+	stroke-width: 10px;
+	top: 32px;
 }
 
 .selected-caret {
+	display: none;
 	height: 35px;
 	left: 50%;
 	position: absolute;
@@ -767,6 +769,7 @@ body {
 	@include transform(translateY(-50%));
 
 	width: 35px;
+	z-index: 15;
 }
 
 /* **************** navigation **************** */
